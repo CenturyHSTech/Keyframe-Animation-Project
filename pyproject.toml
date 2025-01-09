@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "image-gallery-project"
+version = "0.1.0"
+description = ""
+authors = ["Chris Winikka <3827026+HundredVisionsGuy@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+html5validator = "^0.4.2"
+pytest = "^7.4.0"
+file-clerk = "*"
+webcode-tk = "*"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

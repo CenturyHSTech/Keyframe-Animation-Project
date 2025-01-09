@@ -1,0 +1,61 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9'
+    
+    - name: Create virtual environment
+      run: python -m venv venv
+
+    - name: 'Test HTML'
+      id: test-html
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: 'Test HTML'
+        setup-command: . ./venv/bin/activate && pip install -r requirements.txt
+        command: . ./venv/bin/activate && pytest tests/test_html.py
+        timeout: 10
+        max-score: 3
+
+    - name: 'Test CSS'
+      id: test-css
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: 'Test CSS'
+        setup-command: . ./venv/bin/activate && pip install -r requirements.txt
+        command: . ./venv/bin/activate && pytest tests/test_css.py
+        timeout: 10
+        max-score: 3
+
+    - name: 'Test Exceeds'
+      id: test-exceeds
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: 'Test Exceeds'
+        setup-command: . ./venv/bin/activate && pip install -r requirements.txt
+        command: . ./venv/bin/activate && pytest tests/test_exceeds.py
+        timeout: 10
+        max-score: 2
+
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-HTML_RESULTS: "${{steps.test-html.outputs.result}}"
+        TEST-CSS_RESULTS: "${{steps.test-css.outputs.result}}"
+      with:
+        runners: test-html,test-css
