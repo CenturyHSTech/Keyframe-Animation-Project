@@ -1139,13 +1139,13 @@ min-versions = ["babel (==2.9.0)", "click (==7.0)", "colorama (==0.4)", "ghp-imp
 
 [[package]]
 name = "mkdocs-autorefs"
-version = "1.2.0"
+version = "1.3.0"
 description = "Automatically link across pages in MkDocs."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 files = [
-    {file = "mkdocs_autorefs-1.2.0-py3-none-any.whl", hash = "sha256:d588754ae89bd0ced0c70c06f58566a4ee43471eeeee5202427da7de9ef85a2f"},
-    {file = "mkdocs_autorefs-1.2.0.tar.gz", hash = "sha256:a86b93abff653521bda71cf3fc5596342b7a23982093915cb74273f67522190f"},
+    {file = "mkdocs_autorefs-1.3.0-py3-none-any.whl", hash = "sha256:d180f9778a04e78b7134e31418f238bba56f56d6a8af97873946ff661befffb3"},
+    {file = "mkdocs_autorefs-1.3.0.tar.gz", hash = "sha256:6867764c099ace9025d6ac24fd07b85a98335fbd30107ef01053697c8f46db61"},
 ]
 
 [package.dependencies]
@@ -2886,13 +2886,13 @@ files = [
 
 [[package]]
 name = "webcode-tk"
-version = "1.1.7"
+version = "1.1.10"
 description = ""
 optional = false
 python-versions = "<4.0,>=3.9.0"
 files = [
-    {file = "webcode_tk-1.1.7-py3-none-any.whl", hash = "sha256:e1dadcb4e93754ed388e59dcdb681455c9fc65339ed5208933d623cc0407ba42"},
-    {file = "webcode_tk-1.1.7.tar.gz", hash = "sha256:646a4e41dd22fdbd005840c7ed72188ed0ad35c753041234ad49ebbc7d372995"},
+    {file = "webcode_tk-1.1.10-py3-none-any.whl", hash = "sha256:1f89d154fedc0ad19661172449987e6b419b96142310099d3010e5b02fc6a0e2"},
+    {file = "webcode_tk-1.1.10.tar.gz", hash = "sha256:e697aedcf6b1e2ca688e5e464eac1e33e6fbcb8831ebb9a63f458eefdee75eef"},
 ]
 
 [package.dependencies]
