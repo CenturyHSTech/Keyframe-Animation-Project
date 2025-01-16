@@ -1,12 +1,20 @@
-# Image-Gallery-Project
-Students will design an image gallery project that showcases a minimum of 9 image thumbnails related to a theme, and these thumbnails link to a full-sized image.
+# Keyframe-Animation-Project
+Students will create a single web page project that animates one or more graphics using one or more keyframe animations and a variety of transitions and animation techniques.
 
 ## Project Requirements
-Are listed in the README file in the `image_gallery` folder.
+Are listed in the README file in the `project` folder.
 You must meet all requirements in the following areas:
-* HTML - meet specific elements
+* HTML You need 
+  - at least 1 image, a `<main>` element that will act as the "stage" for your animation,
+  - a `h1` for the title of your animation
 * Validity - passes the W3C Validator (HTML and CSS)
-* CSS - meet specific CSS requirements (layout, colors & fonts)
+* CSS 
+  - you must have an external stylesheet ending in `.css`
+  - you may NOT use a style attribute in your HTML
+  - you must use the `animation` property on your image (at least one of the images)
+  - you either need to have at least 4 percentage keyframes OR at least 6 keyframes in all
+  - your animation must target at least 4 different properties (opacity, transform, height, etc.) 
+    + ***NOTE: in the case of transform, each type of transform counts as a unique "property" (these would be `translate()`, `rotate()`, `skew()`, etc.)***
 * Design - your design score will be assessed based on the video captures &/or screen captures (you'll want to see the rubric in the assignment description for the course)
 
 ## Instructions
