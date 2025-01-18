@@ -41,6 +41,25 @@ def get_keyframe_results(report: list) -> dict:
 keyframe_results = get_keyframe_results(animation_report)
 
 
+def test_for_number_of_keyframes(keyframes_by_animation):
+    froms_and_tos = 0
+    num_keyframes = 0
+    passing = False
+    for animation in keyframes_by_animation:
+        keyframes = animation.get("keyframes")
+        for keyframe_data in keyframes:
+            keyframe_type = keyframe_data[0]
+            num_keyframes += len(keyframe_data[1])
+            if keyframe_type == "percentage":
+                if num_keyframes >= 4:
+                    passing = True
+            elif keyframe_type in ("from", "to"):
+                froms_and_tos += num_keyframes
+    if froms_and_tos + num_keyframes >= 6:
+        passing = True
+    assert passing
+
+
 def get_keyframe_report(keyframe_results: list, pct_goal: int,
                         overall_goal: int) -> list:
     """returns a list of pass/fail messages (1 for each file)
@@ -77,12 +96,18 @@ def get_keyframe_report(keyframe_results: list, pct_goal: int,
     return results
 
 
-def get_animation_properties_report(animation_values: list, num_goal: int,
-                                    specific_properties=None):
+def get_animation_rulesets_report(animation_values: list,
+                                  num_goal: int,
+                                  specific_properties=None,
+                                  include_transition_values=True):
     """returns a list of pass/fail messages (1 for each file)
 
     Since animation_values might have multiple entries for the same file,
     we need to track a per file record to see if it meets or not.
+
+    Also, since transition can have a variety of techniques (translate(),
+    rotate(), skew(), scale()), we will check each transition for the
+    techniques applied as individual properties.
 
     Args:
         animation_values: a list of filenames with keyframe and property
@@ -91,6 +116,8 @@ def get_animation_properties_report(animation_values: list, num_goal: int,
             to see.
         specific_properties: a list or tuple of properties required to be
             present.
+        include_transition_values: whether we will consider each type of
+            transition as its own property or not (default is True)
 
     Returns:
         results: a list of messages (one for each file in the project) with
@@ -172,7 +199,7 @@ def get_targetted_properties_msg(properties, properties_targetted,
 
 
 keyframe_report = get_keyframe_report(keyframe_results, 4, 6)
-animation_values_report = get_animation_properties_report(animation_report, 4)
+animation_values_report = get_animation_rulesets_report(animation_report, 4)
 
 
 @pytest.mark.parametrize("message", keyframe_report)
